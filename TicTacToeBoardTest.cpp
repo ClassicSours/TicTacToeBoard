@@ -93,6 +93,10 @@ TEST(TicTacToeBoardTest, HorizontalWinX0) {
 	ASSERT_EQ(local_board.getPiece(0,0),local_board.getWinner());
 }
 
+/* 
+BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
+second or third row/column.
+*/
 TEST(TicTacToeBoardTest, HorizontalWinX1) {
 	TicTacToeBoard local_board;	
 	for(int i = 0; i < BOARDSIZE; i++) {
@@ -102,6 +106,10 @@ TEST(TicTacToeBoardTest, HorizontalWinX1) {
 	ASSERT_EQ(local_board.getPiece(1,1),local_board.getWinner());
 }
 
+/* 
+BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
+second or third row/column.
+*/
 TEST(TicTacToeBoardTest, HorizontalWinX2) {
 	TicTacToeBoard local_board;	
 	for(int i = 0; i < BOARDSIZE; i++) {
@@ -110,6 +118,7 @@ TEST(TicTacToeBoardTest, HorizontalWinX2) {
 	ASSERT_NE(Invalid,local_board.getWinner());
 	ASSERT_EQ(local_board.getPiece(2,2),local_board.getWinner());
 }
+
 
 TEST(TicTacToeBoardTest, HorizontalWinO0) {
 	TicTacToeBoard local_board;	
@@ -121,7 +130,10 @@ TEST(TicTacToeBoardTest, HorizontalWinO0) {
 	ASSERT_EQ(local_board.getPiece(0,0),local_board.getWinner());
 }
 
-TEST(TicTacToeBoardTest, HorizontalWinO1) {
+/* 
+BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
+second or third row/column.
+*/TEST(TicTacToeBoardTest, HorizontalWinO1) {
 	TicTacToeBoard local_board;	
 	local_board.toggleTurn();
 	for(int i = 0; i < BOARDSIZE; i++) {
@@ -131,6 +143,10 @@ TEST(TicTacToeBoardTest, HorizontalWinO1) {
 	ASSERT_EQ(local_board.getPiece(1,1),local_board.getWinner());
 }
 
+/* 
+BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
+second or third row/column.
+*/
 TEST(TicTacToeBoardTest, HorizontalWinO2) {
 	TicTacToeBoard local_board;	
 	local_board.toggleTurn();
@@ -141,7 +157,7 @@ TEST(TicTacToeBoardTest, HorizontalWinO2) {
 	ASSERT_EQ(local_board.getPiece(2,2),local_board.getWinner());
 }
 
-TEST(TicTacToeBoardTest, VerticalWinX) {
+TEST(TicTacToeBoardTest, VerticalWinX0) {
 	TicTacToeBoard local_board;	
 	for(int i = 0; i < BOARDSIZE; i++) {
 		local_board.placePiece(0,i);
@@ -150,7 +166,62 @@ TEST(TicTacToeBoardTest, VerticalWinX) {
 	ASSERT_EQ(local_board.getPiece(0,0),local_board.getWinner());
 }
 
-TEST(TicTacToeBoardTest, VerticalWinO) {
+/* 
+BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
+second or third row/column.
+*/
+TEST(TicTacToeBoardTest, VerticalWinX1) {
+	TicTacToeBoard local_board;	
+	for(int i = 0; i < BOARDSIZE; i++) {
+		local_board.placePiece(1,i);
+	}
+	ASSERT_NE(Invalid,local_board.getWinner());
+	ASSERT_EQ(local_board.getPiece(1,1),local_board.getWinner());
+}
+
+/* 
+BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
+second or third row/column.
+*/
+TEST(TicTacToeBoardTest, VerticalWinX2) {
+	TicTacToeBoard local_board;	
+	for(int i = 0; i < BOARDSIZE; i++) {
+		local_board.placePiece(2,i);
+	}
+	ASSERT_NE(Invalid,local_board.getWinner());
+	ASSERT_EQ(local_board.getPiece(2,2),local_board.getWinner());
+}
+
+
+/* 
+BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
+second or third row/column.
+*/
+TEST(TicTacToeBoardTest, VerticalWinO1) {
+	TicTacToeBoard local_board;	
+	local_board.toggleTurn();
+	for(int i = 0; i < BOARDSIZE; i++) {
+		local_board.placePiece(1,i);
+	}
+	ASSERT_NE(Invalid,local_board.getWinner());
+	ASSERT_EQ(local_board.getPiece(1,1),local_board.getWinner());
+}
+
+/* 
+BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
+second or third row/column.
+*/
+TEST(TicTacToeBoardTest, VerticalWinO2) {
+	TicTacToeBoard local_board;	
+	local_board.toggleTurn();
+	for(int i = 0; i < BOARDSIZE; i++) {
+		local_board.placePiece(2,i);
+	}
+	ASSERT_NE(Invalid,local_board.getWinner());
+	ASSERT_EQ(local_board.getPiece(2,2),local_board.getWinner());
+}
+
+TEST(TicTacToeBoardTest, VerticalWinO0) {
 	TicTacToeBoard local_board;	
 	local_board.toggleTurn();
 	for(int i = 0; i < BOARDSIZE; i++) {
