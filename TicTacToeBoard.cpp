@@ -19,9 +19,12 @@ TicTacToeBoard::TicTacToeBoard()
 **/
 Piece TicTacToeBoard::toggleTurn()
 {
-  if (turn == 'X')
-    return Piece('O');
-  return Piece('X');
+  if (turn == X) {
+    turn = O;
+    return turn;
+  }
+  turn = X;
+  return turn;
 }
 
 
@@ -36,10 +39,12 @@ Piece TicTacToeBoard::toggleTurn()
 **/ 
 Piece TicTacToeBoard::placePiece(int row, int column)
 {
-  if (board[row][column] == ' ') {
-    board[row][column] = turn;
-    return board[row][column];
-  }  
+  if (getWinner() == Blank || getWinner() == Invalid) {
+    if (board[row][column] == ' ') {
+      board[row][column] = turn;
+      return board[row][column];
+    }  
+  }
   return Invalid;
 }
 
@@ -59,26 +64,53 @@ Piece TicTacToeBoard::getPiece(int row, int column)
  * Returns which Piece has won, if there is a winner, Invalid if the game
  * is not over, or Blank if the board is filled and no one has won.
 **/
+/* 
+BUG: Returns 'Blank' as a winner if the 1st row or column is blank even if there is a
+tic-tac-toe in row/column 2/3
+ie: 
+' ' | 'X' | ' '
+' ' | 'X' | ' '
+' ' | 'X' | ' '
+or
+' ' | ' ' | ' '
+'X' | 'X' | 'X'
+' ' | ' ' | ' '
+Will return Blank.
+*/
 Piece TicTacToeBoard::getWinner()
 {
-  // Check Horizontals
+  // Check Columns
   for (int i = 0; i < BOARDSIZE; i++) {
-    if ((board[i][0] == board[i][1]) == (board[i][2])) {
-      return board[i][0];
+    if ((getPiece(i,0) == getPiece(i,1)) && (getPiece(i,1) == getPiece(i,2))) {
+      return getPiece(i,0);
     }
   }
   
-  // Check Verticals
+  // Check Rows
   for (int i = 0; i < BOARDSIZE; i++) {
-    if ((board[0][i] == board[1][i]) == (board[2][i])) {
-      return board[0][i];
+    if ((getPiece(0,i) == getPiece(1,i)) && (getPiece(1,i) == getPiece(2,i))) {
+      return getPiece(0,i);
     }
   }
   
   // Check Diagonals
-  if (((board[0][0] == board[1][1]) == board [2][2]) || 
-      ((board[0][2] == board[1][1]) == board[2][0])) { 
-    return board[1][1];
-  }
+  if (((getPiece(0,0) == getPiece(1,1)) && (getPiece(1,1) == getPiece(2,2))) ||
+      ((getPiece(0,2) == getPiece(1,1)) && (getPiece(1,1) == getPiece(2,0))))
+  {
+    return getPiece(1,1);
+  }  
   return Invalid;
+}
+
+#include <iostream>
+void TicTacToeBoard::printBoard()
+{
+   for(int i=0; i<BOARDSIZE; i++)
+   {
+    for(int j=0; j<BOARDSIZE; j++)
+    {
+      std::cout << "| " << board[i][j] << " ";
+    }
+   std::cout << "|" <<std::endl;
+   }
 }

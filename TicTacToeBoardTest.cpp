@@ -94,8 +94,13 @@ TEST(TicTacToeBoardTest, HorizontalWinX0) {
 }
 
 /* 
-BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
-second or third row/column.
+BUG: Returns 'Blank' as a winner if the 1st row or column is blank even if there is a
+tic-tac-toe in row/column 2/3
+ie: 
+' ' | ' ' | ' '
+'X' | 'X' | 'X'
+' ' | ' ' | ' '
+returns Blank.
 */
 TEST(TicTacToeBoardTest, HorizontalWinX1) {
 	TicTacToeBoard local_board;	
@@ -107,8 +112,13 @@ TEST(TicTacToeBoardTest, HorizontalWinX1) {
 }
 
 /* 
-BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
-second or third row/column.
+BUG: Returns 'Blank' as a winner if the 1st row or column is blank even if there is a
+tic-tac-toe in row/column 2/3
+ie: 
+' ' | ' ' | ' '
+' ' | ' ' | ' '
+'X' | 'X' | 'X'
+returns Blank.
 */
 TEST(TicTacToeBoardTest, HorizontalWinX2) {
 	TicTacToeBoard local_board;	
@@ -131,9 +141,15 @@ TEST(TicTacToeBoardTest, HorizontalWinO0) {
 }
 
 /* 
-BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
-second or third row/column.
-*/TEST(TicTacToeBoardTest, HorizontalWinO1) {
+BUG: Returns 'Blank' as a winner if the 1st row or column is blank even if there is a
+tic-tac-toe in row/column 2/3
+ie: 
+' ' | ' ' | ' '
+'O' | 'O' | 'O'
+' ' | ' ' | ' '
+returns Blank.
+*/
+TEST(TicTacToeBoardTest, HorizontalWinO1) {
 	TicTacToeBoard local_board;	
 	local_board.toggleTurn();
 	for(int i = 0; i < BOARDSIZE; i++) {
@@ -144,8 +160,13 @@ second or third row/column.
 }
 
 /* 
-BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
-second or third row/column.
+BUG: Returns 'Blank' as a winner if the 1st row or column is blank even if there is a
+tic-tac-toe in row/column 2/3
+ie: 
+' ' | ' ' | ' '
+' ' | ' ' | ' '
+'O' | 'O' | 'O'
+returns Blank.
 */
 TEST(TicTacToeBoardTest, HorizontalWinO2) {
 	TicTacToeBoard local_board;	
@@ -167,8 +188,13 @@ TEST(TicTacToeBoardTest, VerticalWinX0) {
 }
 
 /* 
-BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
-second or third row/column.
+BUG: Returns 'Blank' as a winner if the 1st row or column is blank even if there is a
+tic-tac-toe in row/column 2/3
+ie: 
+' ' | 'X' | ' '
+' ' | 'X' | ' '
+' ' | 'X' | ' '
+returns Blank.
 */
 TEST(TicTacToeBoardTest, VerticalWinX1) {
 	TicTacToeBoard local_board;	
@@ -180,40 +206,16 @@ TEST(TicTacToeBoardTest, VerticalWinX1) {
 }
 
 /* 
-BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
-second or third row/column.
+BUG: Returns 'Blank' as a winner if the 1st row or column is blank even if there is a
+tic-tac-toe in row/column 2/3
+ie: 
+' ' | ' ' | 'X'
+' ' | ' ' | 'X'
+' ' | ' ' | 'X'
+returns Blank.
 */
 TEST(TicTacToeBoardTest, VerticalWinX2) {
 	TicTacToeBoard local_board;	
-	for(int i = 0; i < BOARDSIZE; i++) {
-		local_board.placePiece(2,i);
-	}
-	ASSERT_NE(Invalid,local_board.getWinner());
-	ASSERT_EQ(local_board.getPiece(2,2),local_board.getWinner());
-}
-
-
-/* 
-BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
-second or third row/column.
-*/
-TEST(TicTacToeBoardTest, VerticalWinO1) {
-	TicTacToeBoard local_board;	
-	local_board.toggleTurn();
-	for(int i = 0; i < BOARDSIZE; i++) {
-		local_board.placePiece(1,i);
-	}
-	ASSERT_NE(Invalid,local_board.getWinner());
-	ASSERT_EQ(local_board.getPiece(1,1),local_board.getWinner());
-}
-
-/* 
-BUG: Should return 'O' or 'X' when they win vertical or horizontal on the
-second or third row/column.
-*/
-TEST(TicTacToeBoardTest, VerticalWinO2) {
-	TicTacToeBoard local_board;	
-	local_board.toggleTurn();
 	for(int i = 0; i < BOARDSIZE; i++) {
 		local_board.placePiece(2,i);
 	}
@@ -229,6 +231,44 @@ TEST(TicTacToeBoardTest, VerticalWinO0) {
 	}
 	ASSERT_NE(Invalid,local_board.getWinner());
 	ASSERT_EQ(local_board.getPiece(0,0),local_board.getWinner());
+}
+
+/* 
+BUG: Returns 'Blank' as a winner if the 1st row or column is blank even if there is a
+tic-tac-toe in row/column 2/3
+ie: 
+' ' | 'O' | ' '
+' ' | 'O' | ' '
+' ' | 'O' | ' '
+returns Blank.
+*/
+TEST(TicTacToeBoardTest, VerticalWinO1) {
+	TicTacToeBoard local_board;	
+	local_board.toggleTurn();
+	for(int i = 0; i < BOARDSIZE; i++) {
+		local_board.placePiece(1,i);
+	}
+	ASSERT_NE(Invalid,local_board.getWinner());
+	ASSERT_EQ(local_board.getPiece(1,1),local_board.getWinner());
+}
+
+/* 
+BUG: Returns 'Blank' as a winner if the 1st row or column is blank even if there is a
+tic-tac-toe in row/column 2/3
+ie: 
+' ' | ' ' | 'O'
+' ' | ' ' | 'O'
+' ' | ' ' | 'O'
+returns Blank.
+*/
+TEST(TicTacToeBoardTest, VerticalWinO2) {
+	TicTacToeBoard local_board;	
+	local_board.toggleTurn();
+	for(int i = 0; i < BOARDSIZE; i++) {
+		local_board.placePiece(2,i);
+	}
+	ASSERT_NE(Invalid,local_board.getWinner());
+	ASSERT_EQ(local_board.getPiece(2,2),local_board.getWinner());
 }
 
 TEST(TicTacToeBoardTest, DiagonalWinX1) {
