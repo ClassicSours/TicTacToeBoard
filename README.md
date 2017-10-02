@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/ClassicSours/TicTacToeBoard.svg?branch=master)](https://travis-ci.org/ClassicSours/TicTacToeBoard)
-
-[![Coverage Status](https://coveralls.io/repos/github/ClassicSours/TicTacToeBoard/badge.svg?branch=master)](https://coveralls.io/github/ClassicSours/TicTacToeBoard?branch=master)
+[![Build Status](https://travis-ci.org/ClassicSours/TicTacToeBoard.svg?branch=master)](https://travis-ci.org/ClassicSours/TicTacToeBoard) [![Coverage Status](https://coveralls.io/repos/github/ClassicSours/TicTacToeBoard/badge.svg?branch=master)](https://coveralls.io/github/ClassicSours/TicTacToeBoard?branch=master)
 
 # TicTacToeBoard
 
