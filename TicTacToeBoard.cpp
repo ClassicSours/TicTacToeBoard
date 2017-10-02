@@ -81,21 +81,22 @@ Piece TicTacToeBoard::getWinner()
 {
   // Check Columns
   for (int i = 0; i < BOARDSIZE; i++) {
-    if ((getPiece(i,0) == getPiece(i,1)) && (getPiece(i,1) == getPiece(i,2))) {
+    if ((getPiece(i,0) == getPiece(i,1)) && (getPiece(i,1) == getPiece(i,2)) && (getPiece(i,0) != Blank)) {
       return getPiece(i,0);
     }
   }
   
   // Check Rows
   for (int i = 0; i < BOARDSIZE; i++) {
-    if ((getPiece(0,i) == getPiece(1,i)) && (getPiece(1,i) == getPiece(2,i))) {
+    if ((getPiece(0,i) == getPiece(1,i)) && (getPiece(1,i) == getPiece(2,i)) && (getPiece(0,i) != Blank)) {
       return getPiece(0,i);
     }
   }
   
   // Check Diagonals
   if (((getPiece(0,0) == getPiece(1,1)) && (getPiece(1,1) == getPiece(2,2))) ||
-      ((getPiece(0,2) == getPiece(1,1)) && (getPiece(1,1) == getPiece(2,0))))
+      ((getPiece(0,2) == getPiece(1,1)) && (getPiece(1,1) == getPiece(2,0))) && 
+      (getPiece(1,1) != Blank))
   {
     return getPiece(1,1);
   }  
