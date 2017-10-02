@@ -94,8 +94,8 @@ Piece TicTacToeBoard::getWinner()
   }
   
   // Check Diagonals
-  if (((getPiece(0,0) == getPiece(1,1)) && (getPiece(1,1) == getPiece(2,2))) ||
-      ((getPiece(0,2) == getPiece(1,1)) && (getPiece(1,1) == getPiece(2,0))) && 
+  if ((((getPiece(0,0) == getPiece(1,1)) && (getPiece(1,1) == getPiece(2,2))) ||
+      ((getPiece(0,2) == getPiece(1,1)) && (getPiece(1,1) == getPiece(2,0)))) && 
       (getPiece(1,1) != Blank))
   {
     return getPiece(1,1);
