@@ -103,15 +103,16 @@ Piece TicTacToeBoard::getWinner()
   return Invalid;
 }
 
-#include <iostream>
-void TicTacToeBoard::printBoard()
-{
-   for(int i=0; i<BOARDSIZE; i++)
-   {
-    for(int j=0; j<BOARDSIZE; j++)
-    {
-      std::cout << "| " << board[i][j] << " ";
-    }
-   std::cout << "|" <<std::endl;
-   }
-}
+// #include <iostream>
+// Debug only
+// void TicTacToeBoard::printBoard()
+// {
+//    for(int i=0; i<BOARDSIZE; i++)
+//    {
+//     for(int j=0; j<BOARDSIZE; j++)
+//     {
+//       std::cout << "| " << board[i][j] << " ";
+//     }
+//    std::cout << "|" <<std::endl;
+//    }
+// }
