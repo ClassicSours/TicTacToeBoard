@@ -153,7 +153,7 @@ TEST(TicTacToeBoardTest, HorizontalWinO1) {
 	TicTacToeBoard local_board;	
 	local_board.toggleTurn();
 	for(int i = 0; i < BOARDSIZE; i++) {
-		local_board.placePiece(i,0);
+		local_board.placePiece(i,1);
 	}
 	ASSERT_NE(Invalid,local_board.getWinner());
 	ASSERT_EQ(local_board.getPiece(1,1),local_board.getWinner());
@@ -172,7 +172,7 @@ TEST(TicTacToeBoardTest, HorizontalWinO2) {
 	TicTacToeBoard local_board;	
 	local_board.toggleTurn();
 	for(int i = 0; i < BOARDSIZE; i++) {
-		local_board.placePiece(i,0);
+		local_board.placePiece(i,2);
 	}
 	ASSERT_NE(Invalid,local_board.getWinner());
 	ASSERT_EQ(local_board.getPiece(2,2),local_board.getWinner());
